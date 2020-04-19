@@ -11,6 +11,7 @@ import { fetchApiInfo } from '../services/APIservice';
 import Header from './LayoutComponents/Header';
 import Section from './LayoutComponents/Section';
 import Footer from './LayoutComponents/Footer';
+import CardList from './CardList';
 
 
 export default class App extends React.Component {
@@ -23,12 +24,12 @@ export default class App extends React.Component {
   componentDidMount() {
     const savedState = JSON.parse(localStorage.getItem('localinfo'));
     if(!savedState) {
-      // fetchApiInfo() 
-      // .then(data => {
-      //   this.setState({
-      //     apiInfo: data,
-      //   });
-      // });
+      fetchApiInfo() 
+      .then(data => {
+        this.setState({
+          apiInfo: data,
+        });
+      });
     } else {
       this.setState(savedState);
     }
@@ -42,6 +43,9 @@ export default class App extends React.Component {
       <div className="App">
         <Header title="Título de la aplicación" />
         <Section id="centralSection" title="Sección principal" role="main content">
+
+          <CardList info={this.state}/>
+
         </Section>
         <Footer />
       </div>
