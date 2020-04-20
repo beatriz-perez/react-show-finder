@@ -17,6 +17,7 @@ export default class CardList extends Component {
     }
 
     render() {
+        console.log(this.props);
 
         const generateJSX = (item, index) => {
             const {show:{ id, image:{medium}, name, rating:{average}, status }} = item;
@@ -31,8 +32,12 @@ export default class CardList extends Component {
               />
             )
         }
-        const {apiInfo} = this.props.info;
-        const JSXArray = apiInfo.map(generateJSX);
+        const {apiInfo, statusFilter, textFilter} = this.props.info;
+        const JSXArray = apiInfo
+            .filter(item => textFilter === "" || item.show.name.toLowerCase().includes(textFilter.toLowerCase()))
+            .filter(item => statusFilter === false || item.show.status === "Running")
+            .map(generateJSX)
+        ;
 
         return (
             <ul className="card--list" style={this.listStyle()}>
