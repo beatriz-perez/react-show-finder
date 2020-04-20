@@ -35,6 +35,23 @@
 
 
 // TEXTS
+.text__base{
+    font-family: 'Raleway', sans-serif;
+    color: $colorTextBase;
+    font-size: 10px;
+    line-height: 10px;
+    font-weight: $fontRegular;
+    text-transform: none;
+    @include mediaSize(tablet){
+        font-size: 12px;
+        line-height: 12px;
+        }
+    @include mediaSize(desktop){
+        font-size: 14px;
+        line-height: 14px;
+    }
+}
+
 .text__footer{
     font-family: 'Raleway', sans-serif;
     color: $colorTextBase;

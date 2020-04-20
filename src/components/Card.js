@@ -4,11 +4,10 @@ import { Link } from 'react-router-dom';
 
 export default class Card extends Component {
     render() {
-        console.log(this.props);
 
-        const {img, title, rating, status} = this.props;
+        const {id, img, title, rating, status} = this.props;
         return (
-            <Link to='/'>
+            <Link to={`/detail/${id}`}>
                 <div className="card">
                     <img src={img} alt={title}/>
                     <p>{title}</p>
@@ -22,6 +21,6 @@ export default class Card extends Component {
 Card.propTypes = {
     img: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
-    rating: PropTypes.string.isRequired,
+    rating: PropTypes.number.isRequired,
     status: PropTypes.string.isRequired
 }

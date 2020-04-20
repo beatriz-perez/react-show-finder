@@ -19,9 +19,10 @@ export default class CardList extends Component {
     render() {
 
         const generateJSX = (item, index) => {
-            const {show:{ image:{medium}, name, rating:{average}, status }} = item;
+            const {show:{ id, image:{medium}, name, rating:{average}, status }} = item;
             return(
               <Card 
+                id = {id}
                 key = {index}
                 img = {medium}
                 title = {name}

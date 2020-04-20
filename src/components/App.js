@@ -12,6 +12,7 @@ import Header from './LayoutComponents/Header';
 import Section from './LayoutComponents/Section';
 import Footer from './LayoutComponents/Footer';
 import CardList from './CardList';
+import Detail from './Detail';
 
 
 export default class App extends React.Component {
@@ -41,10 +42,20 @@ export default class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <Header title="Título de la aplicación" />
-        <Section id="centralSection" title="Sección principal" role="main content">
-
-          <CardList info={this.state}/>
+        <Header title="Show Finder" />
+        <Section id="centralSection" role="main content">
+          
+          <Switch>
+            <Route exact path="/">
+              <CardList info={this.state}/>
+            </Route>
+            <Route path="/detail/:id" 
+              render={routerProps => (
+                <Detail match={routerProps.match} info={this.state.apiInfo} />
+              )
+              }
+            />
+          </Switch>
 
         </Section>
         <Footer />
