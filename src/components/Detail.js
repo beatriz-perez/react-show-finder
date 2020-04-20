@@ -12,20 +12,21 @@ export default class Detail extends Component {
         if (!detailInfo) {
             return (
                 <React.Fragment>
-                    <p>cargando información...</p>
+                    <p className="text__base">cargando información...</p>
                     <Link to="/" className="button__base text__base">Volver al listado</Link>
                 </React.Fragment>
             )
         } else {
             const { show: { image: { medium }, name, rating: { average }, summary, genres } } = detailInfo;
             return (
-                <div>
-                    <p>Id de la serie: {id}</p>
+                <div className="detail__infoBox text__base">
+                    <p><span className="text__base--upperBold">Id de la serie:</span> {id}</p>
                     <img src={medium} alt={name} />
-                    <p>título: {name}</p>
-                    <p>puntuación: {average}</p>
-                    <p>géneros: {genres.join(', ')}</p>
-                    <p>sinopsis:</p>
+                    <p className="text__base--bold">título:</p>
+                    <p>{name}</p>
+                    <p><span className="text__base--bold">puntuación:</span> {average}</p>
+                    <p><span className="text__base--bold">géneros:</span> {genres.join(', ')}</p>
+                    <p className="text__base--bold">sinopsis:</p>
                     {summary}
                     <br/>
                     <Link to="/" className="button__base text__base">Volver al listado</Link>
@@ -37,5 +38,5 @@ export default class Detail extends Component {
 }
 Detail.propTypes = {
     match: PropTypes.object.isRequired,
-    info: PropTypes.object.isRequired,
+    info: PropTypes.array.isRequired,
 }

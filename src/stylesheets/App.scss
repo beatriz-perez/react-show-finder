@@ -3,14 +3,17 @@
 @import './core/variables';
 @import './core/mixins';
 
-// Estilos por componente:
+// Estilos por elemento compositivo:
 @import './components/typography';
 @import './components/buttons';
 
-// Estilos de elementos por secciones:
+// Estilos de secciones:
 @import './layout/header';
 @import './layout/section';
 @import './layout/footer';
+
+// Estilos de componentes react:
+
 
 
 // ESTILOS GENERALES DE PÁGINA ---------------------------------------
