@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
+import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
 
 export default class Detail extends Component {
     render() {
-        console.log(this.props);
 
         const {match: { params: { id } }, info} = this.props;
         let detailInfo = info.length === 0 ? null : info.find(item => item.show.id.toString() === id);
@@ -34,4 +34,8 @@ export default class Detail extends Component {
 
         }
     }
+}
+Detail.propTypes = {
+    match: PropTypes.object.isRequired,
+    info: PropTypes.object.isRequired,
 }

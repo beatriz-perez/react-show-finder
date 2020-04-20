@@ -12,14 +12,18 @@ import Header from './LayoutComponents/Header';
 import Section from './LayoutComponents/Section';
 import Footer from './LayoutComponents/Footer';
 import CardList from './CardList';
+import Filters from './Filters';
 import Detail from './Detail';
 
 
 export default class App extends React.Component {
   constructor(props) {
     super(props);
+    this.changeFilters = this.changeFilters.bind(this);
     this.state = {
-      apiInfo: []
+      apiInfo: [],
+      textFilter: '',
+      statusFilter: false
     }
   } 
   componentDidMount() {
@@ -39,6 +43,10 @@ export default class App extends React.Component {
     localStorage.setItem('localinfo', JSON.stringify(this.state));
   }
 
+  changeFilters(name, value) {
+    this.setState({ [name]: value });
+  }
+
   render() {
     return (
       <div className="App">
@@ -47,6 +55,7 @@ export default class App extends React.Component {
           
           <Switch>
             <Route exact path="/">
+              <Filters task={this.changeFilters} info={this.state}/>
               <CardList info={this.state}/>
             </Route>
             <Route path="/detail/:id" 
